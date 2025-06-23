@@ -1,0 +1,48 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.0'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'org.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// 🌐 웹
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// 🛠 MyBatis + JDBC
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+	// ⚙️ 개발 중 자동 리로딩
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// 💬 유효성 검사
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// 🧠 롬복
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// 🧪 테스트용 H2 DB
+	runtimeOnly 'com.h2database:h2'
+
+	// 🧪 테스트
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

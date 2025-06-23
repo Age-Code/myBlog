@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: org.example.myblog.model
+
+  h2:
+    console:
+      enabled: true
+
+server:
+  port: 8080
