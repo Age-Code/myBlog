@@ -10,16 +10,27 @@ import java.util.List;
 public interface PostService {
 
     /*
+        * 게시글 생성
+     */
+    Long create(PostDto.CreateReqDto dto);
+
+    /*
+        * 게시글 수정
+     */
+    void update(Long id, PostDto.UpdateReqDto dto);
+
+    /*
+        * 게시글 삭제
+     */
+    void delete(Long id);
+
+    /*
         * 게시글 단일 상세 조회
-        * @param id 게시글 ID
-        * @return 상세 응답 DTO
      */
     PostDto.DetailResDto detail(Long id);
 
     /*
         * 게시글 목록 조회 (페이징 기반)
-        * @param dto 페이지 정보 요청 DTO
-        * @return 게시글 리스트
      */
     List<PostDto.DetailResDto> pagedList(PostDto.PagedListReqDto dto);
 }
