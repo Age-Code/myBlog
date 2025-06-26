@@ -1,9 +1,9 @@
-package org.example.myblog.config;
+package com.example.myblog.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan(basePackages = "org.example.myblog.mapper")
+@MapperScan(basePackages = "com.example.myblog.mapper")
 public class MybatisConfig {
 }

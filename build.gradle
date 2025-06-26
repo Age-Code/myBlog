@@ -21,6 +21,9 @@ dependencies {
 	// 🌐 웹
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+	// 🖼 템플릿 엔진 (HTML 렌더링용)
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
 	// 🛠 MyBatis + JDBC
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
