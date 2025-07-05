@@ -15,5 +15,47 @@
 
 <h1>User Signup</h1>
 
+<div>
+    <label>Username</label>
+    <br/>
+    <input type="text" name = "username" id="username" placeholder="Username">
+    <br/>
+
+    <label>Password</label>
+    <br/>
+    <input type="text" name = "password" id="password" placeholder="password">
+    <br/>
+
+    <label>Name</label>
+    <br/>
+    <input type="text" name = "name" id="name" placeholder="name">
+    <br/>
+
+    <button onclick="signup()">Signup</button>
+</div>
+
+<script>
+    function signup() {
+        let data = {
+            username: $('#username').val(),
+            password: $('#password').val(),
+            name: $('#name').val()
+        };
+
+        $.ajax({
+            url: "/api/post",
+            method: "POST",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data),
+            success: (data, status, xhr)=>{
+                alert(JSON.stringify(data));
+            },
+            error: (data, status, xhr)=>{
+                alert(JSON.stringify(data));
+            }
+        });
+    }
+</script>
+
 </body>
 </html>

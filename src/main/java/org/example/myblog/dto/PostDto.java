@@ -23,9 +23,7 @@ public class PostDto {
     // Create Response Dto
     @Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor
     public static class CreateResDto {
-
         Long id;
-
     }
 
     // Detail Request Dto
