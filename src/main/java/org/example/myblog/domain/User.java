@@ -1,0 +1,28 @@
+package org.example.myblog.domain;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+@Getter
+@Setter
+@EntityListeners(AuditingEntityListener.class)
+@Entity
+public class User extends AuditingFields {
+    String username;
+    String password;
+    String name;
+
+    protected User(){}
+    private User(Boolean deleted, String username, String password, String name) {
+        this.deleted = deleted;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+    }
+    public static User of(String username, String password, String name) { return new User(false, username, password, name); }
+
+
+}

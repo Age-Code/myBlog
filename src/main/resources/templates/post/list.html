@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
+
 <div>
     <a href="..">Home</a>
     <a href="create">Create</a>
@@ -21,9 +22,19 @@
 </div>
 
 <div>
-    <ul id="post_list">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">User</th>
+                <th scope="col">CreatedAt</th>
+            </tr>
+        </thead>
+        <tbody id="post_list">
 
-    </ul>
+        </tbody>
+    </table>
 </div>
 
 <script>
@@ -31,11 +42,17 @@
         $.ajax({
             url: "/api/post/list",
             method: "GET",
+            contentType : 'application/json; charset=utf-8',
             success: (data, status, xhr)=>{
                 $("#post_list").html("");
                 for(let each of data){
                     $("#post_list").append(
-                        "<li onclick='location_href("+each["id"]+")'>"+ each["id"]  + "====" + each["title"]+"</>"
+                        "<tr>"
+                        + "<td>" + each["id"] + "</td>"
+                        + "<td onclick='location.href = \"/post/detail/" + each["id"] + "\"'>" + each["title"] + "</td>"
+                        + "<td>" + each["userId"] + "</td>"
+                        + "<td>" + each["createdAt"] + "</td>"
+                        + "</tr>"
                     );
                 }
             },

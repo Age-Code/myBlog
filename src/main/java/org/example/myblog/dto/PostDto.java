@@ -1,15 +1,16 @@
 package org.example.myblog.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.example.myblog.domain.Post;
+
+import java.time.LocalDateTime;
 
 public class PostDto {
 
     // Create Request Dto
     @Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor
     public static class CreateReqDto {
-
-        Long id;
 
         Long userId;
         String title;
@@ -27,10 +28,28 @@ public class PostDto {
 
     }
 
+    // Detail Request Dto
+    @Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor
+    public static class DetailReqDto {
+        Long id;
+    }
+
+    // Detail Response Dto
+    @Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor
+    public static class DetailResDto {
+        Long id;
+        String title;
+        Long userId;
+        LocalDateTime createdAt;
+        LocalDateTime modifiedAt;
+        Boolean deleted;
+        String content;
+    }
+
     // List Request Dto
     @Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor
     public static class ListReqDto {
-        Long userId;
+        Boolean deleted;
     }
 
     // List Response Dto
@@ -39,6 +58,24 @@ public class PostDto {
 
         Long id;
         String title;
+        Long userId;
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+        LocalDateTime createdAt;
 
+
+    }
+
+    // Update Request Dto
+    @Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor
+    public static class UpdateReqDto {
+        Long id;
+        String title;
+        String content;
+    }
+
+    // Delete Request Dto
+    @Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor
+    public static class DeleteReqDto {
+        Long id;
     }
 }
