@@ -6,11 +6,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User Signup</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
 
 <div>
     <a href="..">Home</a>
+    <a href="login">Login</a>
 </div>
 
 <h1>User Signup</h1>
@@ -18,17 +20,17 @@
 <div>
     <label>Username</label>
     <br/>
-    <input type="text" name = "username" id="username" placeholder="Username">
+    <input type="text" name = "username" id="username" placeholder="Username"/>
     <br/>
 
     <label>Password</label>
     <br/>
-    <input type="text" name = "password" id="password" placeholder="password">
+    <input type="password" name = "password" id="password" placeholder="password"/>
     <br/>
 
     <label>Name</label>
     <br/>
-    <input type="text" name = "name" id="name" placeholder="name">
+    <input type="text" name = "name" id="name" placeholder="name"/>
     <br/>
 
     <button onclick="signup()">Signup</button>
@@ -36,6 +38,7 @@
 
 <script>
     function signup() {
+
         let data = {
             username: $('#username').val(),
             password: $('#password').val(),
@@ -43,7 +46,7 @@
         };
 
         $.ajax({
-            url: "/api/post",
+            url: "/api/user/signup",
             method: "POST",
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data),

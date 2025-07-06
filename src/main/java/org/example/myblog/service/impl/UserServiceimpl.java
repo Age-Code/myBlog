@@ -1,6 +1,7 @@
 package org.example.myblog.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.example.myblog.domain.User;
 import org.example.myblog.dto.UserDto;
 import org.example.myblog.repository.UserRepository;
 import org.example.myblog.service.UserService;
@@ -19,4 +20,17 @@ public class UserServiceimpl implements UserService {
 
         return res;
     }
+
+    // Login
+    @Override
+    public UserDto.LoginResDto login(UserDto.LoginReqDto loginReqDto){
+        User user = userRepository.findByUsernameAndPassword(loginReqDto.getUsername(), loginReqDto.getPassword());
+        if(user == null){
+            throw new RuntimeException("Id or Password Error");
+        }else{
+            return UserDto.LoginResDto.builder().id(user.getId()).build();
+        }
+    }
+
+
 }

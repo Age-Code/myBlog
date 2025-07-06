@@ -28,4 +28,9 @@ public class UserDto {
         public String password;
     }
 
+    // Login Response Dto
+    @Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor
+    public static class LoginResDto {
+        public Long id;
+    }
 }
